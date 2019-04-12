@@ -30,9 +30,9 @@ class PrimaryCapsules(nn.Module):
 		Initialize the layer.
 
 		Args:
-			in_channels: 	Number of input channels.
-			out_channels: 	Number of output channels.
-			dim_caps:		Dimensionality, i.e. length, of the output capsule vector.
+			in_channels: 	Number of input channels. 256
+			out_channels: 	Number of output channels. 256
+			dim_caps:		Dimensionality, i.e. length, of the output capsule vector. 8
 		
 		"""
 		super(PrimaryCapsules, self).__init__()
@@ -53,11 +53,11 @@ class RoutingCapsules(nn.Module):
 		Initialize the layer.
 
 		Args:
-			in_dim: 		Dimensionality (i.e. length) of each capsule vector.
-			in_caps: 		Number of input capsules if digits layer.
-			num_caps: 		Number of capsules in the capsule layer
-			dim_caps: 		Dimensionality, i.e. length, of the output capsule vector.
-			num_routing:	Number of iterations during routing algorithm		
+			in_dim: 		Dimensionality (i.e. length) of each capsule vector. 8
+			in_caps: 		Number of input capsules if digits layer. 1152
+			num_caps: 		Number of capsules in the capsule layer. 10
+			dim_caps: 		Dimensionality, i.e. length, of the output capsule vector. 16
+			num_routing:	Number of iterations during routing algorithm. 3
 		"""
 		super(RoutingCapsules, self).__init__()
 		self.in_dim = in_dim

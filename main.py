@@ -5,8 +5,6 @@ import torchvision.transforms as transforms
 from trainer import CapsNetTrainer
 import argparse
 
-DATA_PATH = os.path.join(os.environ['data'])
-
 # Collect arguments (if any)
 parser = argparse.ArgumentParser()
 
@@ -25,11 +23,11 @@ parser.add_argument('--lr_decay', type=float, default=0.96, help='Exponential le
 # Select device "cuda" for GPU or "cpu"
 parser.add_argument('--device', type=str, default=("cuda" if torch.cuda.is_available() else "cpu"), choices=['cuda', 'cpu'], help='Device to use. Choose "cuda" for GPU or "cpu".')
 # Use multiple GPUs?
-parser.add_argument('--multi_gpu', action='store_true', help='Flag whether to use multiple GPUs.')
+parser.add_argument('--multi_gpu', type = bool, default=True, help='Flag whether to use multiple GPUs.')
 # Select GPU device
-parser.add_argument('--gpu_device', type=int, default=None, help='ID of a GPU to use when multiple GPUs are available.')
+parser.add_argument('--gpu_device', type=int, default=1, help='ID of a GPU to use when multiple GPUs are available.') #0,1,2,3
 # Data directory
-parser.add_argument('--data_path', type=str, default=DATA_PATH, help='Path to the MNIST or CIFAR dataset. Alternatively you can set the path as an environmental variable $data.')
+parser.add_argument('--data_path', type=str, default='/data', help='Path to the MNIST or CIFAR dataset. Alternatively you can set the path as an environmental variable $data.')
 args = parser.parse_args()
 
 device = torch.device(args.device)
